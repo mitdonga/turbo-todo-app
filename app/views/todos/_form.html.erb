@@ -10,18 +10,19 @@
       </ul>
     </div>
   <% end %>
+  <div class="flex-div">  
+    <div class="flex-div">
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title %>
+    </div>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
+    <div class="flex-div">
+      <%= form.label :is_done, style: "display: block" %>
+      <%= form.check_box :is_done %>
+    </div>
 
-  <div>
-    <%= form.label :is_done, style: "display: block" %>
-    <%= form.check_box :is_done %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <div>
+      <%= form.submit %>
+    </div>
   </div>
 <% end %>

@@ -1,12 +1,19 @@
-<div id="<%= dom_id todo %>">
-  <p>
-    <strong>Title:</strong>
-    <%= todo.title %>
-  </p>
+<%= turbo_frame_tag todo do %>
+  <div class="todo-item" id="<%= dom_id todo %>">
+    <p>
+      <strong>Title:</strong>
+      <%= link_to todo.title, todo, data: { turbo_frame: "_top" } %>
+    </p>
 
-  <p>
-    <strong>Is done:</strong>
-    <%= todo.is_done %>
-  </p>
+    <p>
+      <strong>Is done:</strong>
+      <%= todo.is_done %>
+    </p>
 
-</div>
+    <p>
+      <%= link_to "Edit", edit_todo_path(todo), data: { turbo_frame: todo }  %> | 
+      <%= link_to "Delete", todo, data: { turbo_method: :delete } %>
+    </p>
+
+  </div>
+<% end %>

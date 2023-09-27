@@ -13,3 +13,25 @@
  *= require_tree .
  *= require_self
  */
+.container {
+    width: 50%;
+    margin-right: 100px;
+    margin-left: 100px;
+    margin-top: 50px;
+
+}
+
+.title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.todo-item {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-div {
+    display: flex;
+    justify-content: space-between;
+}

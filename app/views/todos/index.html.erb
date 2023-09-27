@@ -1,14 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Todos</h1>
-
-<div id="todos">
-  <% @todos.each do |todo| %>
-    <%= render todo %>
-    <p>
-      <%= link_to "Show this todo", todo %>
-    </p>
-  <% end %>
+<div class="title">
+  <h1>Todos</h1>
+  <%= link_to "New todo", 
+      new_todo_path,
+      data: {turbo_frame: "new_todo"} %>
 </div>
 
-<%= link_to "New todo", new_todo_path %>
+<%= turbo_frame_tag "new_todo" %>
+
+<%= turbo_frame_tag "all_todos" do %>
+  <div id="todos">
+    <% @todos.each do |todo| %>
+      <%= render todo %>
+    <% end %>
+  </div>
+<% end %>
+
