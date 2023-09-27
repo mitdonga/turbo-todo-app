@@ -1,28 +1,31 @@
-<%= form_with(model: todo) do |form| %>
-  <% if todo.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
+<div class="todo-form">
+  <%= form_with(model: todo) do |form| %>
+    <% if todo.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(todo.errors.count, "error") %> prohibited this todo from being saved:</h2>
 
-      <ul>
-        <% todo.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul>
+          <% todo.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="flex-div">  
+      <div class="flex-div">
+        <%= form.label :title, style: "display: block" %>
+        <%= form.text_field :title %>
+      </div>
+
+      <div class="flex-div">
+        <%= form.label :is_done, style: "display: block" %>
+        <%= form.check_box :is_done %>
+      </div>
+
+      <div>
+        <%= form.submit %>
+      </div>
+      <%= link_to "Cancel", todos_path %>
     </div>
   <% end %>
-  <div class="flex-div">  
-    <div class="flex-div">
-      <%= form.label :title, style: "display: block" %>
-      <%= form.text_field :title %>
-    </div>
-
-    <div class="flex-div">
-      <%= form.label :is_done, style: "display: block" %>
-      <%= form.check_box :is_done %>
-    </div>
-
-    <div>
-      <%= form.submit %>
-    </div>
-  </div>
-<% end %>
+</div>

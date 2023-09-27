@@ -35,3 +35,8 @@
     display: flex;
     justify-content: space-between;
 }
+
+.todo-form {
+    margin-top: 23px;
+    margin-bottom: 23px;
+}
