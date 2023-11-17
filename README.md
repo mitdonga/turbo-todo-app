@@ -1,24 +1,25 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Follow these steps to run the app locally without using Docker
 
-Things you may want to cover:
+- Install ruby version 3.2.2 and PostgreSQL
 
-* Ruby version
+- Run `bundle install`
 
-* System dependencies
+- Run `rails db:setup db:migrate`
 
-* Configuration
+- Run `rails s`
 
-* Database creation
+- Visit `localhost:3000`
 
-* Database initialization
+<br>
 
-* How to run the test suite
+Follow these steps to run the app locally using Docker
 
-* Services (job queues, cache servers, search engines, etc.)
+- Install Docker desktop and enable docker compose
 
-* Deployment instructions
+- Run `docker-compose up`
 
-* ...
+- Visit `localhost:3005`
+
+That's it you application started running locally.
