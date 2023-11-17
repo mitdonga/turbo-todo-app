@@ -3,6 +3,7 @@ WORKDIR /app
 COPY Gemfile* .
 RUN gem install bundler
 RUN bundle install
+ENTRYPOINT ["./docker-entrypoint.sh"]
 COPY . .
 EXPOSE 3000
 CMD ["sh", "-c", "rails server -b 0.0.0.0"]
