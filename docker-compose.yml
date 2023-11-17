@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  todo_app:
+    build: .
+    ports:
+      - "3005:3000"
+    depends_on:
+      - postgres_db
+    env_file:
+      - "config/docker.env"
+    volumes:
+      - .:/app
+  
+  postgres_db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:
