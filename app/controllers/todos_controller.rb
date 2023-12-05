@@ -26,7 +26,12 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         format.html { redirect_to todo_url(@todo), notice: "Todo was successfully created." }
-        format.turbo_stream
+        format.turbo_stream do
+          render turbo_stream: [
+            turbo_stream.prepend("all_todos", partial: "todos/todo", locals: { todo: @todo }),
+            turbo_stream.update(Todo.new, "")
+          ]
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
@@ -53,7 +58,11 @@ class TodosController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to todos_url, notice: "Todo was successfully destroyed." }
-      format.turbo_stream
+      format.turbo_stream do
+        render turbo_stream: [
+        turbo_stream.remove(@todo)
+      ]
+      end
     end
   end
 
