@@ -28,7 +28,7 @@ class TodosController < ApplicationController
         format.html { redirect_to todo_url(@todo), notice: "Todo was successfully created." }
         format.turbo_stream do
           render turbo_stream: [
-            turbo_stream.prepend("all_todos", partial: "todos/todo", locals: { todo: @todo }),
+            # turbo_stream.prepend("all_todos", partial: "todos/todo", locals: { todo: @todo }),
             turbo_stream.update(Todo.new, "")
           ]
         end
