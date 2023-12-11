@@ -2,11 +2,18 @@
 
 <p style="color: green"><%= notice %></p>
 
-<div class="title">
-  <h1>Todos</h1>
-  <%= link_to "New todo", 
-      new_todo_path,
-      data: {turbo_frame: "new_todo"} %>
+<div data-controller="slideshow">
+  <div data-slideshow-target="slidesContainer"></div>
+
+  <button data-action="slideshow#previous" data-slideshow-target="previousBtn"> ← </button>
+  <button data-action="slideshow#next" data-slideshow-target="nextBtn"> → </button>
+</div>
+
+<div class="title" data-controller="hello">
+  <h1 data-action="click->hello#greet" data-hello-target="title">Todos</h1>
+  <%= link_to "New todo",
+    new_todo_path,
+    data: {turbo_frame: "new_todo"} %>
 </div>
 
 <%= turbo_frame_tag "new_todo" %>
